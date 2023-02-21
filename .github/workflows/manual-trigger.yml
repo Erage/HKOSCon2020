@@ -34,7 +34,8 @@ jobs:
     
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
-        echo "Tags: ${{ github.event.inputs.tags }}" 
+        echo "Tags: ${{ github.event.inputs.tags }}"
+        echo "${{github.event.inputs.instanceType }}"
     - name: Manual Workflow Approval
       if: github.event.inputs.instancesType != 'dev'
       uses: trstringer/manual-approval@v1.8.0
