@@ -35,18 +35,16 @@ jobs:
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}" 
-   
-    - name: Workflow Approval
-       - '${{ if in (''github.event.inputs.instancesType'' ,''dev'',''stg'') }}':
-             - name: Manual Workflow Approval
-                   uses: trstringer/manual-approval@v1.8.0
-                   with:
-                     approvers: pavwanch
-                     secret: '${{github.TOKEN}}'
-                     minimum-approvals: 1
-                     issue-title: testing the Approval process
-                     exclude-workflow-initiator-as-approver: false
-
+    - name: Manual Workflow Approval
+      if: github.event.inputs.instancesType == 'dev'
+      uses: trstringer/manual-approval@v1.8.0
+      with:
+           approvers: Er4ge
+           secret: '${{github.TOKEN}}'
+           minimum-approvals: 1
+           issue-title: Testing the Approval process
+           exclude-workflow-initiator-as-approver: false
+           depends_on_job: 'Manual Workflow Approval'
 
             
    
