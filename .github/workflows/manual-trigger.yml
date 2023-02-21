@@ -20,7 +20,7 @@ on:
       instanceType:
         description: 'Instance type (stg, dev)'
         required: true
-        default: stg
+        default: dev
 jobs:
  
  build:
