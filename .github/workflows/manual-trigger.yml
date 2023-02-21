@@ -37,7 +37,7 @@ jobs:
         echo "Tags: ${{ github.event.inputs.tags }}"
         echo "${{github.event.inputs.instanceType }}"
     - name: Manual Workflow Approval
-      if: github.event.inputs.instancesType != 'dev'
+      if: ${{github.event.inputs.instanceType }} == 'dev'
       uses: trstringer/manual-approval@v1.8.0
       with:
            approvers: Er4ge
