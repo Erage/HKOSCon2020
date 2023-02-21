@@ -45,7 +45,6 @@ jobs:
            minimum-approvals: 1
            issue-title: Testing the Approval process
            exclude-workflow-initiator-as-approver: false
-           depends_on_job: 'Manual Workflow Approval'
 
             
    
