@@ -10,7 +10,17 @@ on:
         default: 'warning'
       tags:
         description: 'Test scenario tags'
-
+      instance:
+        description: Instance URL or name from config.yaml
+        required: true
+      region:
+        description: 'Region metadata expected (na, emea, apac)'
+        required: true
+        default: na
+      instanceType:
+        description: 'Instance type (stg, dev)'
+        required: true
+        default: dev
 jobs:
  
   build:
@@ -25,3 +35,18 @@ jobs:
     - run: |
         echo "Log level: ${{ github.event.inputs.logLevel }}"
         echo "Tags: ${{ github.event.inputs.tags }}" 
+   
+    - name: Workflow Approval
+       - '${{ if in (''github.event.inputs.instancesType'' ,''dev'',''stg'') }}':
+             - name: Manual Workflow Approval
+                   uses: trstringer/manual-approval@v1.8.0
+                   with:
+                     approvers: pavwanch
+                     secret: '${{github.TOKEN}}'
+                     minimum-approvals: 1
+                     issue-title: testing the Approval process
+                     exclude-workflow-initiator-as-approver: false
+
+
+            
+   
