@@ -28,7 +28,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+   
     - name: Say something
       run: echo "${{github.event.inputs.instanceType }}"
     
@@ -53,5 +53,5 @@ jobs:
         # Whether or not to filter out the user who initiated the workflow as an approver if they are in the approvers list
         exclude-workflow-initiator-as-approver: false # optional
         # Comma separated list of words that can be used to approve beyond the defaults.
-            
-   
+    - uses: stefanzweifel/git-auto-commit-action@v4         
+     
